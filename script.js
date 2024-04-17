@@ -14,6 +14,9 @@ SECOND ASSIGNMENT - UI with DOM manipulation
 3) add a div to dispaly results 
 4) change console log to DOM methods 
 5) display the running score 
+5,1)create two scores 
+5,2) store the running in each one
+5,3) first at 5 wins, display the name of the winner in new div 
 6) winner of the game is the first at 5 points 
 */
 
@@ -28,6 +31,7 @@ function getComputerMove(){
     var computerMove = getRandomIntInsideAnInterval(1,3); 
     return computerMove; 
 }
+
 function getPlayerMove (){
     let playerMoveInUpperCase = prompt("Write Paper, Rock or Scisors", "paper").toUpperCase();
 return playerMoveInUpperCase; 
@@ -46,7 +50,7 @@ function transformMoveUpperCaseIntoNumberZerotoThree(moveInUppercase){
         playerMoveNumber = 2; 
         break; 
 
-        case "SCISORS": 
+        case "SCISSORS": 
         playerMoveNumber = 3; 
         break; 
     }
@@ -95,13 +99,73 @@ function calculateResultOfTheGame(computerMove, playerMoveInUpperCase){
     return resultMessage; 
 }
 
-while (true){
+
+const paper = document.querySelector("#paper"); 
+const rock = document.querySelector("#rock"); 
+const scissors = document.querySelector("#scissors"); 
+
+
+let playerScore = 0; 
+let computerScore = 0; 
+
+const playerScoreDisplay = document.querySelector("#playerScore"); 
+const computerScoreDisplay = document.querySelector("#computerScore"); 
+const winnerDisplay = document.querySelector("#winner"); 
+
+paper.addEventListener("click", function(){
+    var resultOfTheGame = calculateResultOfTheGame(getComputerMove(), "PAPER");
+    winnerDisplay.textContent =""; 
+    upDateScores(resultOfTheGame); 
+    detectWinner();
+});
+
+rock.addEventListener("click", function(){
+    var resultOfTheGame = calculateResultOfTheGame(getComputerMove(), "ROCK");
+    winnerDisplay.textContent =""; 
+    upDateScores(resultOfTheGame);  
+    detectWinner();
+})
+
+scissors.addEventListener("click", function(){
+    var resultOfTheGame = calculateResultOfTheGame(getComputerMove(), "SCISSORS");
+    winnerDisplay.textContent =""; 
+    upDateScores(resultOfTheGame); 
+    detectWinner(); 
+});
+
+function upDateScores(string){
+    results.textContent = string; 
+    switch(string){
+        case "the computer lose": playerScore++; 
+        break; 
+        case "the computer won": computerScore++;  
+        break; 
+    }
+    playerScoreDisplay.textContent = playerScore; 
+    computerScoreDisplay.textContent = computerScore;
+
+}
+
+function detectWinner(){
+    if (playerScore == 5){
+        winnerDisplay.textContent = "YOU WIN"; 
+        playerScore = 0; 
+        computerScore = 0; 
+    }
+    if(computerScore == 5){
+        winnerDisplay.textContent = "COMPUTER WINS"; 
+        playerScore = 0; 
+        computerScore = 0; 
+    }
+}
+
+//while (true){
 
 //let thisComputerMove = getComputerMove(); 
 
 //let thisPlayerMove = getPlayerMove(); 
 
 //let thisResult = calculateResultOfTheGame(getComputerMove(), getPlayerMove()); 
-console.log(calculateResultOfTheGame(getComputerMove(), getPlayerMove())); 
+//console.log(calculateResultOfTheGame(getComputerMove(), getPlayerMove())); 
    
-}
+//}

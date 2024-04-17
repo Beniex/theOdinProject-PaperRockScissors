@@ -1,0 +1,63 @@
+button {
+    border: 2px solid black; /* Bordure de 2px solide noire */
+    font-size: 45px; /* Taille de police 18px */
+    background-color: blue; /* Arrière-plan bleu */
+    color: white; /* Texte blanc */
+}
+
+body {
+    font-family: 'Roboto', Arial;
+    display: flex;
+    flex-direction: column;
+    justify-items:auto;
+    align-items: center;
+    margin: 0;
+    font-size: 30px;
+    background-color: aqua;
+}
+
+.buttons {
+   display: flex; 
+   padding: 50px;
+   gap: 60px;
+   background-color: pink;
+}
+
+#results {
+    font-size: 45px;
+    color: red; 
+}
+
+.scores{
+    display: flex;
+    justify-content: space-between;
+    gap: 45px;
+}
+
+.playerScoreDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.computerScoreDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#computerScore{
+    font-size: 60px;
+    color : fuchsia; 
+}
+
+#playerScore {
+    font-size: 60px;
+    color : fuchsia;
+}
+
+#winner{
+    font-size: 90px;
+    color: gold;
+}
